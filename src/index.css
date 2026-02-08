@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Jost, system-ui, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: #fff6eb;
+  height: 100vh;
+  color: #161616;
+}
+
+header {
+  height: 64px;
+  background-color: #fff7ed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+  text-transform: uppercase;
+  margin-left: 1em;
+  font-size: 1.5em;
+}
+
+nav a {
+  padding: 0.3em;
+  margin-right: 2em;
+  color: #161616;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: rgb(146 51 234);
+  border-bottom: solid 2px rgb(146 51 234);
+}
+
+.active-nav-link {
+  font-weight: 700;
+  border-bottom: solid 2px rgb(0, 0, 0);
+  /* border-bottom: solid 2px rgb(146 51 234); */
+}
