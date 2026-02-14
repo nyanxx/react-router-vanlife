@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 import type { Van } from "../../types/Van";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 type VanProps = {
     van: Van
@@ -29,14 +29,8 @@ export default function Van({ van }: VanProps): JSX.Element {
         }
     }
 
-    const navigate = useNavigate()
-
-    function handleClick() {
-        navigate(`/vans/${van.id}`)
-    }
-
     return (
-        <Link to={`/vans/${van.id}`} className="van" onClick={handleClick}>
+        <Link to={`/vans/${van.id}`} className="van">
             <img src={van.imageURL} alt={`Photo of ${van.name}`} />
             <div>
                 <h3>{van.name}</h3>
