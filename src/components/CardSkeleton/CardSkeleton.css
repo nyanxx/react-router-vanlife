@@ -1,0 +1,69 @@
+.card-skeleton {
+  --element-color: #e0e0e0;
+  background-color: white;
+  height: 408.6px;
+  width: 365.33px;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  border-radius: 0.5em;
+  overflow: hidden;
+  cursor: pointer;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.card-skeleton .card-img-skeleton {
+  height: 275px;
+  width: 100%;
+  background-color: var(--element-color);
+}
+
+.card-skeleton div {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  align-items: center;
+}
+
+.card-skeleton div .card-type-skeleton {
+  background-color: var(--element-color);
+  height: 1em;
+  width: 4em;
+  padding: 0.2em 0.5em;
+  border-radius: 0.3em;
+}
+
+.card-skeleton .card-price-skeleton {
+  margin-left: auto;
+  margin-right: 1em;
+  background-color: var(--element-color, rgb(247 247 246));
+  height: 1.5em;
+  width: 3em;
+  border-radius: 0.3em;
+}
+
+.card-skeleton h3,
+p {
+  margin: 0;
+}
+
+.card-skeleton h3 {
+  background-color: var(--element-color);
+  height: 1.5em;
+  width: 10em;
+  border-radius: 0.3em;
+}

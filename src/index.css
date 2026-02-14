@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
 
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  /* scrollbar-width: thin; */
+  scrollbar-width: none;
+}
+
 body {
   margin: 0;
   box-sizing: border-box;
@@ -9,6 +16,22 @@ body {
   color: #161616;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+footer {
+  background-color: rgb(32 32 32);
+  color: rgb(184, 184, 184);
+  min-height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+}
+
 header {
   height: 64px;
   background-color: #fff7ed;
@@ -16,12 +39,31 @@ header {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
 }
 
-header h1 {
+header > a {
+  text-decoration: none;
+}
+
+header > a > h1 {
   text-transform: uppercase;
   margin-left: 1em;
   font-size: 1.5em;
+  color: black;
+}
+
+/* header img {
+  margin-left: 1em;
+  width: 117px;
+} */
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 nav a {
@@ -40,4 +82,25 @@ nav a:hover {
   font-weight: 700;
   border-bottom: solid 2px rgb(0, 0, 0);
   /* border-bottom: solid 2px rgb(146 51 234); */
+}
+
+nav a:last-of-type:hover {
+  border: none;
+  text-decoration: none;
+}
+
+.user-logo {
+  display: block;
+}
+
+.user-logo:hover path {
+  fill: rebeccapurple;
+}
+
+.user-logo-active svg path {
+  fill: rebeccapurple;
+}
+
+section {
+  padding-top: 4em;
 }
