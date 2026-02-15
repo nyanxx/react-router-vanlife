@@ -28,7 +28,7 @@ export default function Header(): JSX.Element {
                 >Contact Us
                 </NavLink>
                 <NavLink
-                    to="/dashboard"
+                    to="/user"
                     aria-label="Go to user profile"
                     className={({ isActive }) => (isActive ? "user-logo-active" : "")}
                 >
