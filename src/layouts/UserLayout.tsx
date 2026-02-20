@@ -1,54 +1,61 @@
 import type { JSX } from "react";
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, type NavLinkRenderProps } from "react-router-dom";
 export default function UserLayout(): JSX.Element {
+
+    const linkBaseStyle = `p-1 mr-8 text-[#161616] border-b-2 border-transparent`
+    const activeLinkStyle = `p-1 mr-8 text-[#161616] font-bold border-b-2 border-solid border-black`
+    const hoverLinkStyle = `hover:text-button hover:border-b-2 hover:border-solid hover:border-button`
+
+    function navLinkClass({ isActive }: NavLinkRenderProps): string {
+        return isActive ? activeLinkStyle : `${linkBaseStyle} ${hoverLinkStyle}`
+    }
+
     return (
         <>
-            <section>
-                <nav>
-                    <NavLink
-                        to="."
-                        className={({ isActive }) => (isActive ? "active-nav-link" : "")}
-                        end 
-                    >Dashboard
-                    </NavLink>
-                    <NavLink
-                        to="income"
-                        className={({ isActive }) => (isActive ? "active-nav-link" : "")}
-                    >Income
-                    </NavLink>
-                    <NavLink
-                        to="transfer"
-                        className={({ isActive }) => (isActive ? "active-nav-link" : "")}
+            <nav className="mt-16 bg-[#ffedd6] min-h-12.5 flex items-center justify-center gap-4">
+                <NavLink
+                    to="."
+                    className={navLinkClass}
+                    end
+                >Dashboard
+                </NavLink>
+                <NavLink
+                    to="income"
+                    className={navLinkClass}
+                >Income
+                </NavLink>
+                <NavLink
+                    to="transfer"
+                    className={navLinkClass}
 
-                    >Transfer
-                    </NavLink>
-                    <NavLink
-                        to="/user/uservans"
-                        className={({ isActive }) => (isActive ? "active-nav-link" : "")}
+                >Transfer
+                </NavLink>
+                <NavLink
+                    to="uservans"
+                    className={navLinkClass}
 
-                    >Your Vans
-                    </NavLink>
-                    <NavLink
-                        to="/user/reviews"
-                        className={({ isActive }) => (isActive ? "active-nav-link" : "")}
+                >Your Vans
+                </NavLink>
+                <NavLink
+                    to="reviews"
+                    className={navLinkClass}
 
-                    >Reviews
-                    </NavLink>
-                    <NavLink
-                        to="/user/addvan"
-                        className={({ isActive }) => (isActive ? "active-nav-link" : "")}
+                >Reviews
+                </NavLink>
+                <NavLink
+                    to="addvan"
+                    className={navLinkClass}
 
-                    >Add Van
-                    </NavLink>
-                    <NavLink
-                        to="/user/rentals"
-                        className={({ isActive }) => (isActive ? "active-nav-link" : "")}
+                >Add Van
+                </NavLink>
+                <NavLink
+                    to="rentals"
+                    className={navLinkClass}
 
-                    >Rentals
-                    </NavLink>
-                </nav>
-                <Outlet />
-            </section>
+                >Rentals
+                </NavLink>
+            </nav>
+            <Outlet />
         </>
     )
 }   

@@ -1,7 +1,6 @@
 import type { JSX } from "react"
 import { useNavigate } from "react-router-dom"
-import { homeHeroImage } from "../../assets/images"
-import "./Home.css"
+import { homeHeroImage } from "../assets/images"
 
 export default function Home(): JSX.Element {
 
@@ -13,12 +12,12 @@ export default function Home(): JSX.Element {
 
     return (
         <>
-            <section className="home-hero" style={{
+            <section className="p-0 min-h-full text-white flex flex-col justify-center items-center text-xl bg-no-repeat bg-cover bg-center" style={{
                 backgroundImage: `url(${homeHeroImage})`
             }}>
-                <h2>You got the travel plans, we got the travel vans.</h2>
+                <h2 className="text-[2.6rem] font-bold">You got the travel plans, we got the travel vans.</h2>
                 <p>Add adventure to your life by joining the #vanlife movement. Rent the perfect van to make your perfect road trip.</p>
-                <button type="button" onClick={handleButton}>Find your van</button>
+                <button className="button mt-12 text-sm w-135 tracking-wider " type="button" onClick={handleButton}>Find your van</button>
             </section>
             <section>
                 <p>
