@@ -1,5 +1,5 @@
-import { vansImgUrl } from "../assets/images";
-import type { Van } from "../types/Van";
+import { vansImgUrl } from "../../assets/images";
+import type { Van } from "../../types/Van";
 
 export const vanData: Van[] = [
     {
