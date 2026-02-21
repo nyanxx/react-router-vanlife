@@ -1,48 +1,48 @@
-import { Response } from "miragejs"
-import type { Request, Response as ResponseType } from "miragejs"
+import type { Request, Response } from "miragejs"
 import * as userServices from "../services/user.services"
+import { makeResponse } from "../utils/makeResponse"
 
-export const getUserVans = (): ResponseType => {
+export const getUserVans = (): Response => {
     try {
         const userVans = userServices.getUserVans()
         if (userVans.length !== 0) {
-            return new Response(200, {}, {
+            return makeResponse(200, {
                 success: true,
                 data: userVans
             })
         } else {
-            return new Response(404, {}, {
+            return makeResponse(404, {
                 success: false,
-                errorMsg: "No data found."
+                errorMsg: "No data found.",
             })
         }
     } catch (err) {
         console.error(err)
-        return new Response(500, {}, {
+        return makeResponse(500, {
             success: false,
             errorMsg: "Internal Server Error",
         })
     }
 }
 
-export const getUserVansById = (request: Request): ResponseType => {
+export const getUserVansById = (request: Request): Response => {
     try {
         const { id } = request.params
         const userVan = userServices.getUserVansById(+id)
         if (userVan) {
-            return new Response(200, {}, {
+            return makeResponse(200, {
                 success: true,
                 data: userVan
             })
         } else {
-            return new Response(404, {}, {
+            return makeResponse(404, {
                 success: false,
-                errorMsg: "No data found."
+                errorMsg: "No data found.",
             })
         }
     } catch (err) {
         console.error(err)
-        return new Response(500, {}, {
+        return makeResponse(500, {
             success: false,
             errorMsg: "Internal Server Error",
         })
