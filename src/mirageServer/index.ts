@@ -6,6 +6,7 @@ import { makeResponse } from "./utils/makeResponse";
 try {
     createServer({
         routes() {
+            this.logging = false
             this.namespace = "api"
             vanRoutes(this)
             userRoutes(this)
