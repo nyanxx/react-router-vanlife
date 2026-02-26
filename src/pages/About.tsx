@@ -7,7 +7,7 @@ export default function About(): JSX.Element {
         <section className="w-full pt-16">
             <div className="relative">
                 <img className="w-full h-50 object-cover" src={vanAtNight} alt="van image" />
-                <p className="absolute bottom-2.5 right-2.5 text-[#ffffffa7] text-[10px] z-10 ">Image by <a className="text-[#ff8b38a7]" href="https://pixabay.com/users/xat-ch-12531001/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5438537">Xavier Turpain</a> from <a className="text-[#ff8b38a7]" href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5438537">Pixabay</a></p>
+                <p className="absolute bottom-2.5 right-2.5 text-[#ffffffa7] text-[10px] z-10 ">Image by <a className="text-[#ff8b38a7]" rel="noopener noreferrer" target="_blank" href="https://pixabay.com/users/xat-ch-12531001/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5438537">Xavier Turpain</a> from <a className="text-[#ff8b38a7]" rel="noopener noreferrer" target="_blank" href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5438537">Pixabay</a></p>
             </div>
             <div className="p-8 w-5xl mx-auto">
                 <h2 className="text-[2.2rem] font-bold">Don't <span className="underline underline-offset-4 decoration-red-500">squeeze</span> in a sedan when you could <span className="underline underline-offset-4 decoration-green-500">relax</span> in a van.</h2>
