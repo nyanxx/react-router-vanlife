@@ -26,3 +26,8 @@ export function getVanStatusColor(status: Van["status"]): string | undefined {
     if (status === "rented") return "bg-red-500"
     if (status === "repairing") return "bg-yellow-500"
 }
+
+export function capitalize(word: string): string {
+    return word.charAt(0).toUpperCase() + word.slice(1)
+}
+
