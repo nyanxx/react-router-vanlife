@@ -92,19 +92,25 @@ export default function Vans(): JSX.Element {
 
   // effect
   useEffect(() => {
-    fetch("/api/vans")
-      .then((res) => res.json())
-      .then((json) => {
-        setError(false);
-        setVans(json.data);
-      })
-      .catch((err) => {
-        console.error("Fetch ERR: ", err);
+    async function fetchVans() {
+      try {
+        setError(false)
+        setLoading(true)
+        const res = await fetch("/api/vans")
+        const json = await res.json()
+        if (json.success) {
+          setVans(json.data)
+        } else {
+          throw new Error("Error fetching from miragejs")
+        }
+      } catch (error) {
+        console.error("Vans fetching error: ", error);
         setError(true);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchVans()
   }, []);
 
   return (
@@ -156,7 +162,6 @@ export default function Vans(): JSX.Element {
             <CardSkeleton key={index} />
           ))}
         </div>
-        // insted of vans i think i should be filteredVans
       ) : !filteredVans.length || error ? (
         <h3 className="pt-15 text-center text-2xl text-red-950 opacity-80 font-bold">No vans available</h3>
 
