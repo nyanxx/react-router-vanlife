@@ -15,23 +15,25 @@ export default function DetailedVan(): JSX.Element {
     const { id } = useParams()
 
     useEffect(() => {
-        fetch(`/api/vans/${id}`)
-            .then(res => res.json())
-            .then(json => {
+        async function fetchVanById() {
+            try {
                 setError(false)
                 setIsLoading(true)
+                const res = await fetch(`/api/vans/${id}`)
+                const json = await res.json()
                 if (json.success) {
                     setVan(json.data)
                 } else {
-                    throw new Error("error fetching from miragejs")
+                    throw new Error("Error fetching from miragejs")
                 }
-            })
-            .catch((err) => {
-                console.error("Fetch ERR: ", err)
+            } catch (error) {
+                console.error("Van by id fetching error: ", error)
                 setError(true)
-            }).finally(() => {
+            } finally {
                 setIsLoading(false)
-            })
+            }
+        }
+        fetchVanById()
     }, [id])
 
 
