@@ -156,8 +156,10 @@ export default function Vans(): JSX.Element {
             <CardSkeleton key={index} />
           ))}
         </div>
-      ) : !vans.length || error ? (
-        <h3>No vans available</h3>
+        // insted of vans i think i should be filteredVans
+      ) : !filteredVans.length || error ? (
+        <h3 className="pt-15 text-center text-2xl text-red-950 opacity-80 font-bold">No vans available</h3>
+
       ) : (
         <div className="grid grid-cols-3 gap-10 justify-between my-8">
           {
