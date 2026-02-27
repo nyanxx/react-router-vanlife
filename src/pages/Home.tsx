@@ -1,4 +1,4 @@
-import type { JSX } from "react"
+import { useEffect, useRef, type JSX } from "react"
 import { useNavigate } from "react-router-dom"
 // import { homeHeroImage } from "../assets/images"
 
@@ -10,6 +10,13 @@ export default function Home(): JSX.Element {
         navigate("/vans")
     }
 
+    const focusHead = useRef<HTMLHeadingElement>(null)
+
+    useEffect(() => {
+        focusHead.current?.focus();
+        focusHead.current?.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" })
+    }, []);
+
     return (
         <>
             <section className="p-0 min-h-full text-white flex flex-col justify-center items-center text-xl bg-no-repeat bg-cover bg-center" style={{
@@ -17,7 +24,7 @@ export default function Home(): JSX.Element {
                 backgroundImage: `url(https://cdn.pixabay.com/photo/2020/05/26/09/01/night-5222267_1280.jpg)`
                 // https://pixabay.com/photos/night-milky-way-road-light-traces-5222267/
             }}>
-                <h2 className="text-[2.6rem] font-bold">You got the travel plans, we got the travel vans.</h2>
+                <h2 ref={focusHead} tabIndex={-1} className="text-[2.6rem] font-bold">You got the travel plans, we got the travel vans.</h2>
                 <p>Add adventure to your life by joining the #vanlife movement. Rent the perfect van to make your perfect road trip.</p>
                 <button className="button mt-12 text-sm w-135 tracking-wider " type="button" onClick={handleButton}>Find your van</button>
             </section>
