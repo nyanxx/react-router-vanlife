@@ -55,9 +55,19 @@ export default function DetailedVan(): JSX.Element {
                                     <h3 className="text-[2.5rem] font-bold">{van.name}</h3>
                                     <p className="ml-auto text-[1.4rem]"><span className="font-semibold">${van.price}</span>/day</p>
                                     <p className="text-right w-[80%]">{van.description}</p>
-                                    <button className={`button w-[30%] mt-6 ${(van.status !== "available") ? "button-disabled " : ""} `} disabled={van.status !== "available"} onClick={() => {
-                                        console.log("feat pending...")
-                                    }} type="button" aria-label={`Rent ${van.name} van`}>Rent this van</button>
+                                    {
+                                        (van.status === "available")
+                                            ?
+                                            <button className={`button w-[30%] mt-6`} disabled={van.status !== "available"} onClick={() => {
+                                                console.log("feat pending...")
+                                            }} type="button" aria-label={`Rent ${van.name} van`}>Rent this van</button>
+                                            :
+                                            <button className="h-10.5 text-white font-bold font-jost rounded-[5px] bg-[#fb2c36] w-[30%] mt-6 cursor-not-allowed">
+                                                Van not available
+                                            </button>
+
+                                    }
+
                                 </div>
                             </div>
                         </div>
