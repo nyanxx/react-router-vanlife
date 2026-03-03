@@ -51,7 +51,7 @@ export const vanData: Van[] = [
         id: 6,
         name: "Eco Compact",
         price: 60,
-        type: "eco",
+        type: "rugged",
         imageURL: vansImgUrl[5],
         status: "rented",
         description: "An environmentally friendly van with efficient fuel use and compact design. Ideal for city trips and eco-conscious travelers."

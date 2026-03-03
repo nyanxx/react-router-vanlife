@@ -1,8 +1,7 @@
 import type { JSX, PropsWithChildren } from "react"
-import type { Van } from "../types/Van"
-import { capitalize, getVanTypeColor } from "../utils"
-import type { FilterQuery } from "../types/FilterQuery"
-
+import type { Van } from "../../../../types/Van"
+import type { FilterQuery } from "../../../../types/FilterQuery"
+import { capitalize, getVanTypeColor } from "../../../../utils"
 
 type FilterButtonProps = {
     value: Van["type"]

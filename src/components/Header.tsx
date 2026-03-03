@@ -1,15 +1,8 @@
 import type { JSX } from "react"
-import { Link, NavLink, type NavLinkRenderProps } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 // import { siteLogo } from "./assets/images/images"
 
 export default function Header(): JSX.Element {
-
-    const linkBaseStyle = `p-1 mr-8 text-[#161616] border-b-2 border-transparent`
-    const activeLinkStyle = `p-1 mr-8 text-[#161616] font-bold border-b-2 border-solid border-black`
-    const hoverLinkStyle = `hover:text-button hover:border-b-2 hover:border-solid hover:border-button`
-    function navLinkClass({ isActive }: NavLinkRenderProps): string {
-        return isActive ? activeLinkStyle : `${linkBaseStyle} ${hoverLinkStyle}`
-    }
 
     return (
         <header className="bg-header flex justify-between items-center fixed w-full z-1000 h-16 shadow-[0_2px_3px_-1px_rgba(0,0,0,0.3)]">
@@ -18,25 +11,29 @@ export default function Header(): JSX.Element {
             </Link>
             {/* <img src={siteLogo} alt="van-life-site-logo"/> */}
             <nav className="flex items-center justify-center">
-                <NavLink
-                    to="/vans"
-                    aria-label="Explore vans"
-                    title="Explore Vans"
-                    className={navLinkClass}
-                >Vans</NavLink>
-                <NavLink
-                    to="/about"
-                    aria-label="Know about us"
-                    title="Know About Us"
-                    className={navLinkClass}
-                >About Us</NavLink>
-                {/* <NavLink
-                    to="/contact"
-                    aria-label="Contact us"
-                    title="Contact Us"
-                    className={navLinkClass}
-                >Contact Us
-                </NavLink> */}
+
+                {
+                    [
+                        { name: "vans", alt: "Explore vans" },
+                        { name: "about", alt: "Know about us" },
+                    ]
+                        .map(nav => (
+                            <NavLink
+                                key={nav.name}
+                                to={`/${nav.name}`}
+                                aria-label={nav.alt}
+                                title={nav.alt}
+                                className={({ isActive }) => (
+                                    [
+                                        "p-1 mr-8 text-[#161616] border-b-2 border-transparent capitalize hover:text-button hover:border-b-2 hover:border-solid hover:border-button",
+                                        isActive ? "p-1 mr-8 text-[#161616] font-bold border-b-2 border-solid border-black" : ""
+                                    ]
+                                        .filter(Boolean)
+                                        .join(" ")
+                                )}
+                            >{nav.name}</NavLink>
+                        ))
+                }
                 <NavLink
                     to="/user"
                     aria-label="Go to user profile"
@@ -60,6 +57,6 @@ export default function Header(): JSX.Element {
                     </svg>
                 </NavLink>
             </nav>
-        </header>
+        </header >
     )
 }
