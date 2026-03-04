@@ -1,5 +1,5 @@
 import type { JSX } from "react";
-import { Outlet, NavLink, type NavLinkRenderProps } from "react-router-dom";
+import { Outlet, NavLink, type NavLinkRenderProps, Navigate } from "react-router-dom";
 export default function UserLayout(): JSX.Element {
 
     const linkBaseStyle = `p-1 mr-8 text-[#161616] border-b-2 border-transparent capitalize`
@@ -9,6 +9,8 @@ export default function UserLayout(): JSX.Element {
     function navLinkClass({ isActive }: NavLinkRenderProps): string {
         return isActive ? activeLinkStyle : `${linkBaseStyle} ${hoverLinkStyle}`
     }
+
+    const isLogedIn = false
 
     return (
         <>
@@ -23,12 +25,15 @@ export default function UserLayout(): JSX.Element {
                     .map(nav => (
                         <NavLink
                             to={nav}
+                            key={nav}
                             className={navLinkClass}
                         >{nav}
                         </NavLink>
                     ))}
             </nav>
-            <Outlet />
+
+            {isLogedIn ? <Outlet /> : <Navigate to={"/signin"} replace />}
+
         </>
     )
 }   
