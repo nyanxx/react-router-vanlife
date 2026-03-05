@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 import { DropdownMenu } from "radix-ui";
 import { CaretDownIcon } from "@radix-ui/react-icons"
-import type { FilterQuery } from "../../../types/FilterQuery";
+import type { FilterQuery } from "../../../../types/FilterQuery";
 
 type SortByProps = { setQueries: (query: FilterQuery) => void }
 
