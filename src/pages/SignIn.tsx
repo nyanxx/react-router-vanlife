@@ -3,10 +3,12 @@ import { Link, useNavigate } from "react-router-dom"
 import type { User } from "../types/User"
 import { EyeOpenIcon, EyeNoneIcon } from "@radix-ui/react-icons";
 import { usePasswordVisibility } from "../hooks/usePasswordVisibility";
+import { useLoginContext } from "../context/LoginContext";
 
 export default function SignIn(): JSX.Element {
 
     const navigate = useNavigate()
+    const { setLogedIn } = useLoginContext()
 
     function handleSignIn(formData: FormData) {
         const email = formData.get("email")
@@ -26,7 +28,8 @@ export default function SignIn(): JSX.Element {
 
             if (user.password === password) {
                 // alert("logged in success")
-                sessionStorage.setItem('isLogedIn', '{"status": true}')
+                // sessionStorage.setItem('isLogedIn', '{"status": true}')
+                setLogedIn(true)
                 navigate("/user")
             } else {
                 alert("wrong password or email")
