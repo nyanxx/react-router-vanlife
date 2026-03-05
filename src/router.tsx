@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom"
 import Layout from "./layouts/Layout"
-import UserLayout from "./layouts/UserLayout"
+import ProtectedUserLayout from "./layouts/ProtectedUserLayout"
 import Home from "./pages/Home"
 import DetailedVan from "./pages/Vans/DetailedVan"
 import About from "./pages/About"
 import SignUp from "./pages/SignUp"
-import SignIn from "./pages/SignIn"
+// import SignIn from "./pages/SignIn"
 import NotFound from "./pages/NotFound"
 import UserDashboard from "./pages/UserDashboard"
 import Income from "./pages/UserDashboard/Income"
@@ -20,6 +20,7 @@ import VansError from "./pages/Vans/components/VansError"
 import Error from "./components/Error"
 import VansLayout from "./pages/Vans/VansLayout"
 import VansGrid from "./pages/Vans/VansGrid"
+import SignIn from "./pages/SignIn"
 
 const router = createBrowserRouter([
     {
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
             { path: "signin", Component: SignIn },
             {
                 path: "user",
-                Component: UserLayout,
+                Component: ProtectedUserLayout,
                 children: [
                     { index: true, Component: UserDashboard },
                     { path: "income", Component: Income },

@@ -48,3 +48,20 @@ export const getUserVansById = (request: Request): Response => {
         })
     }
 }
+
+export const getUserToken = (): Response => {
+    try {
+        return makeResponse(200, {
+            success: true,
+            data: {
+                token: "test123"
+            }
+        })
+    } catch (err) {
+        console.error(err)
+        return makeResponse(500, {
+            success: false,
+            errorMsg: "Internal Server Error",
+        })
+    }
+}

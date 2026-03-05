@@ -27,4 +27,4 @@ try {
     console.error("Server ERR: ", err)
 }
 
-// fetch("/api/test").then(res => res.json()).then(data => console.log(data))
+fetch("/api/user", { method: 'POST' }).then(res => res.json()).then(data => console.log(data.data.token))

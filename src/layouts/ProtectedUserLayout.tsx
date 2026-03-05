@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 import { Outlet, NavLink, type NavLinkRenderProps, Navigate } from "react-router-dom";
-export default function UserLayout(): JSX.Element {
+export default function ProtectedUserLayout(): JSX.Element {
 
     const linkBaseStyle = `p-1 mr-8 text-[#161616] border-b-2 border-transparent capitalize`
     const activeLinkStyle = `p-1 mr-8 text-[#161616] font-bold border-b-2 border-solid border-black capitalize`
@@ -10,7 +10,12 @@ export default function UserLayout(): JSX.Element {
         return isActive ? activeLinkStyle : `${linkBaseStyle} ${hoverLinkStyle}`
     }
 
-    const isLogedIn = false
+    let isLogedIn;
+    const loginStatus = sessionStorage.getItem("isLogedIn")
+    const data = loginStatus && JSON.parse(loginStatus)
+    if (data) {
+        isLogedIn = data
+    }
 
     return (
         <>
