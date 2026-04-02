@@ -1,30 +1,33 @@
-import { createServer } from "miragejs";
+import { createServer, Response } from "miragejs";
 import { vanRoutes } from "./routes/vans.routes";
-import { userRoutes } from "./routes/user.routes";
-import { makeResponse } from "./utils/makeResponse";
+import { userVansRoutes } from "./routes/userVans.routes";
+import { authRoutes } from "./routes/auth.routes";
+// import { checkAuthRoute, checkUserVansRoute, checkVansRoute } from "./check";
 
 try {
-    createServer({
-        routes() {
-            this.logging = false
-            this.namespace = "api"
-            vanRoutes(this)
-            userRoutes(this)
+  createServer({
+    routes() {
+      this.logging = false;
+      this.namespace = "api/auth";
+      authRoutes(this);
 
-            this.namespace = ""
-            this.get("*",
-                () => {
-                    return makeResponse(404, {
-                        success: false,
-                        errorMsg: "No route found!"
-                    })
+      this.namespace = "api/vans";
+      vanRoutes(this);
 
-                }
-            )
-        },
-    })
+      // This is a protected route (need access token verification)
+      this.namespace = "api/user/vans";
+      userVansRoutes(this);
+
+      this.namespace = "";
+      this.get("*", () => {
+        return new Response(404, {}, { message: "No route found!" });
+      });
+    },
+  });
 } catch (err) {
-    console.error("Server ERR: ", err)
+  console.error("ServerCreationError: ", err);
 }
 
-fetch("/api/user", { method: 'POST' }).then(res => res.json()).then(data => console.log(data.data.token))
+// checkAuthRoute();
+// checkVansRoute();
+// checkUserVansRoute();

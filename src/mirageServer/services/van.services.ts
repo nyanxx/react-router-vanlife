@@ -1,9 +1,9 @@
 import { vanData } from "../data/vanData";
 
 export function getVans() {
-    return vanData
+  return vanData;
 }
 
 export function getVansById(id: number) {
-    return vanData.find(van => (van.id === id))
+  return vanData.find((van) => van.id === id);
 }

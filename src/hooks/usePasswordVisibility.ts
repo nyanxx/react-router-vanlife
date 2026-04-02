@@ -6,17 +6,17 @@ import { useState } from "react";
  * const confirmPasswordField = usePasswordVisibility();
  */
 export function usePasswordVisibility() {
-    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-    function togglePasswordVisibility() {
-        setIsPasswordVisible(prev => !prev);
-    }
+  function togglePasswordVisibility() {
+    setIsPasswordVisible((prev) => !prev);
+  }
 
-    return {
-        isPasswordVisible,
-        inputType: isPasswordVisible ? "text" : "password",
-        togglePasswordVisibility,
-    };
+  return {
+    isPasswordVisible,
+    inputType: isPasswordVisible ? "text" : "password",
+    togglePasswordVisibility,
+  };
 }
 
 // <input

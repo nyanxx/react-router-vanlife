@@ -1,1 +1,1 @@
-export { default } from "./VansLayout"
+export { default } from "./VansLayout";

@@ -10,6 +10,12 @@
   --color-button-hover: #e47d33;
 }
 
+@layer utilities {
+  .smooth-transition {
+    @apply transition-all duration-300 ease-in-out;
+  }
+}
+
 html {
   scroll-behavior: smooth;
   scrollbar-gutter: stable;
@@ -31,4 +37,3 @@ html {
 .button:hover {
   background-color: var(--color-button-hover);
 }
-
